@@ -60,7 +60,7 @@ $(document).ready(function () {
             noteItem.addClass("note-item-list");
             noteItem.attr("id", data.notes[i]._id);
             // noteItem.data("id", data.notes[i]._id);
-            noteDeleteBtn = $("<button> Delete </button>").addClass("btn btn-danger delete-note-modal");
+            noteDeleteBtn = $("<i id='close' class='fa fa-times' style='color:red' aria-hidden='true'></i>").addClass("delete-note-modal");
             noteDeleteBtn.attr("data-noteId", data.notes[i]._id);
             noteItem.append(noteDeleteBtn, " ");
         }
