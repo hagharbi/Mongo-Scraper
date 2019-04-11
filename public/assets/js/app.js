@@ -49,21 +49,22 @@ $(document).ready(function () {
     });
 
     // generate the text inside the notes modal
-    function createModalHTML(data) {
+    function renderNotes(data) {
         $("#note-modal-title").text("Notes for article: " + data.title);
         var noteItem;
         var noteDeleteBtn;
-        console.log("data notes legnth ", data.notes.length)
+        
         for (var i = 0; i < data.notes.length; i++) {
-            noteItem = $("<li>").text(data.notes[i].body);
+            noteItem = $("<li>").text(data.notes[i].noteText);
+            console.log("Note item is: ", data.notes[i].noteText);
             noteItem.addClass("note-item-list");
             noteItem.attr("id", data.notes[i]._id);
-            //  noteItem.data("id", data.notes[i]._id);
+            // noteItem.data("id", data.notes[i]._id);
             noteDeleteBtn = $("<button> Delete </button>").addClass("btn btn-danger delete-note-modal");
             noteDeleteBtn.attr("data-noteId", data.notes[i]._id);
-            noteItem.prepend(noteDeleteBtn, " ");
-            $(".notes-list").append(noteItem);
+            noteItem.append(noteDeleteBtn, " ");
         }
+        $(".notes-list").append(noteItem);
     }
 
     // when the add note button is clicked on the saved articles page, show a modal. Empty the contents first.
@@ -77,7 +78,7 @@ $(document).ready(function () {
             type: "GET"
         }).then(
             function (data) {
-                createModalHTML(data);
+                renderNotes(data);
             }
         );
 
@@ -90,16 +91,14 @@ $(document).ready(function () {
     $(".note-save-btn").on("click", function (event) {
         event.preventDefault();
         var articleId = $("#add-note-modal").attr("data-articleId")
-        var newNote = {
-            body: $("#note-body").val().trim()
-        }
-        console.log(newNote);
         $.ajax("/submit/" + articleId, {
             type: "POST",
-            data: newNote
+            data: { 
+                noteText: $("#note-body").val().trim() 
+            }
         }).then(
-            function (data) {}
-        );
+            function (data) {
+            });
     });
 
     // delete the note that was clicked and remove the whole <li> because the text and delete button are included
