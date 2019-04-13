@@ -12,7 +12,7 @@ To see updated news stories, click `Get new articles` at the top of the `Home` p
 
 When you see an article in the list that you want to mark as a favorite, click `Save article`, and read it again by clicking `Saved articles` in the top menu bar. After you have an article in your saved list, you can comment on it by clicking `Add note`.
 
-![Add notes to a page](/public/assets/images/addnote_screenshot.png))
+![Add notes to a page](/public/assets/images/addnote_screenshot.png)
 
 _Note: There is no login system, so all saved articles and comments are visible to and can be deleted by all users._
 
