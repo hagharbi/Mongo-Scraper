@@ -2,8 +2,6 @@
 
 This is a full-stack JavaScript app built using MongoDB, Mongoose, Node.js, Express.js, Handlebars.js, HTML, and CSS. It scrapes the  [TechCrunch](https://techcrunch.com/) homepage and stores article titles and links, along with your notes and favorites, in MongoDB. The articles and notes collections reference each other through population.
 
-https://mongo-news-scrapper2019.herokuapp.com
-
 ![screenshot of the homepage](/public/assets/images/home_screenshot.png)
 
 ## Get new articles, save favorites, and write notes
