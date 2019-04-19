@@ -1,7 +1,7 @@
 // require dependencies
 var express = require("express");
 var mongoose = require("mongoose");
-var request = require("request");
+var axios = require("axios");
 var cheerio = require("cheerio");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
@@ -56,9 +56,9 @@ app.get("/", function (req, res) {
 
 // use cheerio to scrape stories from TechCrunch and store them
 app.get("/scrape", function (req, res) {
-    request("https://techcrunch.com/", function (error, response, html) {
+    axios.get("https://techcrunch.com/").then(function(response) {
         // Load the html body from request into cheerio
-        var $ = cheerio.load(html);
+        var $ = cheerio.load(response.data);
         $("div.post-block").each(function (i, element) {
 
             // trim() removes whitespace because the items return \n and \t before and after the text
